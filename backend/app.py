@@ -5,11 +5,11 @@ from config import Config
 
 app = Flask(__name__)
 
-# Load constarts like DEBUG, PORT etc.
-app.config.from_object(Config)  
+# Load constants like DEBUG, PORT etc.
+app.config.from_object(Config)
 
-# Allow requests from frontend
-CORS(app)  
+# Allow requests from anywhere (http/https/local). For stricter control, scope origins.
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=False)
 
 @app.route('/')
 def home():
