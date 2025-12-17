@@ -1,0 +1,15 @@
+services:
+  # Backend Flask API
+  - type: web
+    name: tic-tac-toe-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 2 -b 0.0.0.0:$PORT wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        value: ${SECRET_KEY}  # Set this in Render dashboard
+      - key: FLASK_DEBUG
+        value: "0"
+    plan: free
+    healthCheckPath: /
