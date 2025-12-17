@@ -1,2 +1,5 @@
 Flask
 flask-cors
+# WSGI servers for production
+gunicorn
+waitress

@@ -1,3 +1,6 @@
+import os
+
+
 class Config:
-    DEBUG = True
-    SECRET_KEY = "" #maybe I use don't know right now
+    DEBUG = os.getenv("FLASK_DEBUG", "0") == "1"
+    SECRET_KEY = os.getenv("SECRET_KEY", "change-me")

@@ -1,11 +1,12 @@
 // src/api.js
 import axios from "axios";
+import { API_BASE_URL } from "./config";
 
-const API_URL = "http://localhost:5000/api/move";
+const MOVE_ENDPOINT = `${API_BASE_URL}/api/move`;
 
 export const getAIMove = async (board, ai = "O") => {
   try {
-    const response = await axios.post(API_URL, { board, ai });
+    const response = await axios.post(MOVE_ENDPOINT, { board, ai });
     return response.data.move;
   } catch (error) {
     console.error("Error fetching AI move:", error);
