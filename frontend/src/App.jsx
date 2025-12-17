@@ -4,11 +4,13 @@ import { getAIMove } from "./api";
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-3 p-5">
-      <div className=" w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center font-bold text-white text-lg">
-        7
-      </div>
-      <span className="text-xl font-bold text-white hidden sm:inline">
+    <div className="flex items-center gap-3 p-3 sm:gap-3 sm:p-5 ml-6 mt-6 sm:ml-0 sm:mt-0">
+      <img
+        src="/logo.jpg"
+        alt="Seven Studio"
+        className="w-12 h-12 sm:w-10 sm:h-10"
+      />
+      <span className="text-lg sm:text-xl font-bold text-white">
         SEVEN STUDIO
       </span>
     </div>
@@ -113,49 +115,53 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white p-4">
+    <div className="min-h-screen flex flex-col bg-black text-white p-2 sm:p-4">
       {/* Header with Logo */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-4 sm:mb-8">
         <Logo />
       </div>
 
       {/* Main Content */}
       <div className="flex flex-col items-center justify-center flex-1">
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-center px-1">
           Hardest Tic Tac Toe of All Time
         </h1>
 
         {/* Scoreboard */}
-        <div className="flex gap-6 mb-4 text-lg font-semibold">
+        <div className="flex gap-3 sm:gap-6 mb-4 sm:mb-4 text-sm sm:text-lg font-semibold px-2 justify-center flex-wrap">
           <p>😎 You: {userWins}</p>
           <p>🤖 COMPUTER: {aiWins}</p>
           <p>🤝 Draws: {draws}</p>
         </div>
 
         {/* Game Board */}
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
+        <div className="bg-gray-900 p-4 sm:p-6 rounded-lg shadow-lg">
           <Board
             board={board}
             handleClick={handleClick}
             winningCombo={winningCombo}
           />
 
-          <div className="text-center mt-4">
+          <div className="text-center mt-3 sm:mt-4">
             {loading && (
-              <p className="text-gray-400 animate-pulse">AI is thinking...</p>
+              <p className="text-gray-400 animate-pulse text-sm sm:text-base">
+                AI is thinking...
+              </p>
             )}
             {winner && winner !== "draw" && (
-              <p className="text-lg text-green-400">Winner: {winner}</p>
+              <p className="text-lg sm:text-lg text-green-400">
+                Winner: {winner}
+              </p>
             )}
             {winner === "draw" && (
-              <p className="text-lg text-yellow-400">It's a Draw!</p>
+              <p className="text-lg sm:text-lg text-yellow-400">It's a Draw!</p>
             )}
           </div>
 
           <button
             onClick={resetGame}
-            className="mt-4 w-full px-4 py-2 bg-white text-black font-semibold rounded hover:bg-gray-300 transition"
+            className="mt-4 sm:mt-4 w-full px-4 sm:px-4 py-2 sm:py-2 bg-white text-black font-semibold rounded text-base sm:text-base hover:bg-gray-300 transition"
           >
             Reset Game
           </button>
